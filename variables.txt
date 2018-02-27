@@ -1,8 +1,8 @@
-api_key = "AIzaSyD4dm5ikGq1QofZCbGh1zqRI2LHX9ob4Xw"
-export_csv_file = 'C:\\Users\\vbnunes\\Documents\\projectos\\newoffice\\export.csv'
-export_kml_file = 'C:\\Users\\vbnunes\\Documents\\projectos\\newoffice\\export.kml'
-addresses = 'C:\\Users\\vbnunes\\Documents\\projectos\\newoffice\\pessoas.xlsx'
-icon1 = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/CSW_Gradiente_rgb.png/220px-CSW_Gradiente_rgb.png"
-icon2 = "http://cmauriflama.sp.gov.br/app/webroot/img/avatar-user.png"
-new_office_locations = [["38.764418,-9.183848", "Edificio J"], ["38.771769,-9.1770024","Edifício 22"], ["38.76492,-9.0972683","Parque das nacoes"], ["38.730515,-9.106289","Beato"], ["38.740536,-9.304286","Tagus park"], ["38.717926,-9.142819","Av liberdade"]]
-rush_hour = ""
+api_key = "INSERT GOOGLE MAPS API KEY HERE"
+export_csv_file = 'PATH TO CSV FILE'
+export_kml_file = 'PATH TO KML FILE'
+addresses = 'PATH TO EXCEL FILE WITH ADDRESSES'
+icon1 = "ICON FOR INTEREST LOCATIONS"
+icon2 = "ICON FOR PEOPEL'S ADDRESSES"
+new_office_locations = [["lat,lon", "Title"], [...]]  #(INTEREST LOCATIONS LIST)
+rush_hour = "INSERT RUSH HOUR IN UNIX TIMESTAMP - ONLY FOR PREMIUM API KEYS"
