@@ -56,8 +56,8 @@ def main():
     employees_addresses = []
     for s in wb.sheets():
         for row in range(1, s.nrows):
-            col_names = s.row(0)
-            value  = (s.cell(row,36).value)
+            # col_names = s.row(0)
+            value  = (s.cell(row,2).value)
             try : value = str(int(value))
             except : pass
             if value!="":
