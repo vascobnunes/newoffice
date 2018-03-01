@@ -61,7 +61,7 @@ def main():
             try: value = str(int(value))
             except: pass
             if value != "":
-                employees_addresses.append(value)
+                employees_addresses.append("\""+value+"\"")
 
     #write results to csv file
     with open(export_csv_file, 'w') as myfile:
@@ -77,10 +77,10 @@ def main():
             #cycle through people's addresses (retrieved from excel file)
             for ea in employees_addresses:
                 #composing google maps api url
-                message1 = "https://maps.googleapis.com/maps/api/distancematrix/json?origins="+ea+"&destinations="+no[0]+"&key="
-                # message2 = "https://maps.googleapis.com/maps/api/distancematrix/json?origins="+ea+"&destinations="+no[0]+"&avoid=highways&mode=bicycling&key="
-                message2 = "https://maps.googleapis.com/maps/api/distancematrix/json?origins="+ea+"&destinations="+no[0]+"&departure_time="+rush_hour+"&traffic_model=best_guess&key="
-                message3 = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" + ea + "&destinations=" + no[0] + "&departure_time="+rush_hour+"&mode=transit&key="
+                message1 = "https://maps.googleapis.com/maps/api/distancematrix/json?origins="+ea+"&destinations="+no[0].replace(" ","")+"&key="
+                # message2 = "https://maps.googleapis.com/maps/api/distancematrix/json?origins="+ea+"&destinations="+no[0].replace(" ","")+"&avoid=highways&mode=bicycling&key="
+                message2 = "https://maps.googleapis.com/maps/api/distancematrix/json?origins="+ea+"&destinations="+no[0].replace(" ","")+"&departure_time="+rush_hour+"&traffic_model=best_guess&key="
+                message3 = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" + ea + "&destinations=" + no[0].replace(" ","") + "&departure_time="+rush_hour+"&mode=transit&key="
                 messages = [message1, message2, message3]
                 results = []
                 control = 0
