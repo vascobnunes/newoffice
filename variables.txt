@@ -5,4 +5,5 @@ addresses = 'PATH TO EXCEL FILE WITH ADDRESSES'
 icon1 = "ICON FOR INTEREST LOCATIONS"
 icon2 = "ICON FOR PEOPEL'S ADDRESSES"
 new_office_locations = [["lat,lon", "Title"], [...]]  #(INTEREST LOCATIONS LIST)
+person_type = "Colaborator"
 rush_hour = "INSERT RUSH HOUR IN UNIX TIMESTAMP - ONLY FOR PREMIUM API KEYS"

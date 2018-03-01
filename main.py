@@ -46,6 +46,7 @@ def main():
     icon1 = data.icon1
     icon2 = data.icon2
     new_office_locations = data.new_office_locations
+    person_type = data.person_type
     rush_hour = data.rush_hour
     if rush_hour == None or rush_hour == "": rush_hour = str(time.time())[0:10]
 
@@ -56,11 +57,10 @@ def main():
     employees_addresses = []
     for s in wb.sheets():
         for row in range(1, s.nrows):
-            # col_names = s.row(0)
-            value  = (s.cell(row,2).value)
-            try : value = str(int(value))
-            except : pass
-            if value!="":
+            value = s.cell(row,1).value
+            try: value = str(int(value))
+            except: pass
+            if value != "":
                 employees_addresses.append(value)
 
     #write results to csv file
@@ -105,7 +105,7 @@ def main():
                 #register person's coordinates to kml
                 coords = get_coordinates(ea, api_key)
                 if check_employee == 0:
-                    colaborator = kml.newpoint(name="colaborador", coords=[(coords)])
+                    colaborator = kml.newpoint(name=person_type, coords=[(coords)])
                     colaborator.style.iconstyle.icon.href = icon2
                 #append result to interest location
                 if results[0] > 0: distances.append(results[0])
@@ -116,10 +116,22 @@ def main():
                 wr.writerow([no[1], int(results[0]), int(results[1])/60, int(results[2])/60, results[3]/60])
             check_employee += 1
             #do some stats for interest location
-            avg_distance = round(sum(distances) / len(distances)/1000, 0)
-            avg_durations_car = round(sum(durations_car) / len(durations_car) / 60, 0)
-            avg_durations_traffic = round(sum(durations_traffic) / len(durations_traffic) / 60, 0)
-            avg_durations_bus = round(sum(durations_bus) / len(durations_bus) / 60, 0)
+            if len(distances) > 0:
+                avg_distance = round(sum(distances) / len(distances)/1000, 0)
+            else:
+                avg_distance = "n/a"
+            if len(durations_car) > 0:
+                avg_durations_car = round(sum(durations_car) / len(durations_car) / 60, 0)
+            else:
+                avg_durations_car = "n/a"
+            if len(durations_traffic) > 0:
+                avg_durations_traffic = round(sum(durations_traffic) / len(durations_traffic) / 60, 0)
+            else:
+                avg_durations_traffic = "n/a"
+            if len(durations_bus) > 0:
+                avg_durations_bus = round(sum(durations_bus) / len(durations_bus) / 60, 0)
+            else:
+                avg_durations_bus = "n/a"
             #register interest location with stats to kml
             no_lat = float(no[0].split(",")[0])
             no_lng = float(no[0].split(",")[1])
